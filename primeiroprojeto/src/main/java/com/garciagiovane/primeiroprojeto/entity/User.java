@@ -12,17 +12,25 @@ import javax.persistence.ManyToMany;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idUser;
+	private Long idUser;
 	private String name;
-	private String email;
-	
+	private String email;	
 	@ManyToMany
 	private Set<Role> roles;
 	
-	public int getIdUser() {
+	public User() {
+	}
+	
+	public User(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+	
+	public Long getIdUser() {
 		return idUser;
 	}
-	public void setIdUser(int idUser) {
+	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
 	public String getName() {
