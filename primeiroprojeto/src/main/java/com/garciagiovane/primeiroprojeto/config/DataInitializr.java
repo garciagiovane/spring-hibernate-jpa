@@ -1,7 +1,6 @@
 package com.garciagiovane.primeiroprojeto.config;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -23,12 +22,17 @@ public class DataInitializr implements ApplicationListener<ContextRefreshedEvent
 
 		if (users.isEmpty()) {
 			createUser("Giovane", "giovane.garcia09@gmail.com");
-			createUser("Vict�ria", "vicmarqes@gmail.com");
+			createUser("Vict�ria", "vicmarqes@gmail.com");
 			createUser("Renata", "re.santos@gmail.com");
 
 			System.out.println("Users saved successfully");
 		}
-
+		
+		System.out.println(findByName("Giovane").getName());
+		System.out.println("JPQL query: "+userRepository.findByNotAColumnNameJPQL("Victória").getName());
+		System.out.println("Native sql query: " + userRepository.findByNotAColumnNameNativeSQL("Renata").getName());
+		System.out.println("Native sql query like: " + userRepository.findByNotAColumnNameLike("V").getName());
+		System.out.println("Native sql query ignore case: " + userRepository.findByNameIgnoreCase("victória").getName());
 		Optional<User> user = userRepository.findById(0L);
 		user.ifPresent(u -> deleteUser(u));
 
@@ -48,5 +52,9 @@ public class DataInitializr implements ApplicationListener<ContextRefreshedEvent
 
 	private void alterUser(User user) {
 		userRepository.save(user);
+	}
+	
+	private User findByName(String name) {
+		return userRepository.findByName(name);
 	}
 }
