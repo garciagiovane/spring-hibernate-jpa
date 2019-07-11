@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Primeiro template</title>
+</head>
+<body>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Idade</th>
+  </tr>
+  <tr th:each="user : ${usersList}">
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.email}"></td>
+  </tr>
+</table>
+
+</body>
+</html>

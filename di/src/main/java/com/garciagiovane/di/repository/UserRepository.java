@@ -1,9 +1,9 @@
-package com.garciagiovane.projetomongo.repository;
+package com.garciagiovane.di.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-import com.garciagiovane.projetomongo.entity.User;
+import com.garciagiovane.di.entity.User;
 
 public interface UserRepository extends MongoRepository<User, String>{
 	User findByNameLike(String name);
