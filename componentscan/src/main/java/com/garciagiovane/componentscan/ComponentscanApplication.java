@@ -8,6 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 import com.garciagiovane.componentscan.controller.MyController;
 
 @SpringBootApplication
+/*doesn't work
+@ComponentScan(basePackages = "com.garciagiovane.componentscan.service")*/
+
+/*work*/
 @ComponentScan(basePackages = "com.garciagiovane.componentscan.service, com.garciagiovane.componentscan.controller")
 public class ComponentscanApplication {
 
