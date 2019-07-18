@@ -23,10 +23,10 @@ public class UserController {
 	}
 	
 	@GetMapping("user/{name}")
-	public User getUserByName(@PathVariable String name) {
+	public List<User> getUserByName(@PathVariable String name) {
 		List<User> users = new ArrayList<User>();
 		users.add(new User(name, name+"@teste.com.br"));
-		return new User(name, name+"@teste.com.br");
+		return users;
 	}
 	
 	@PostMapping("/user")
